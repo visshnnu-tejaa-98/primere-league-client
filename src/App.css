@@ -1,38 +1,31 @@
-.App {
-  text-align: center;
+.bannar {
+	height: 80vh;
+	background-image: url('https://cricketaddictor.gumlet.io/wp-content/uploads/2021/02/153757448_173638941016448_6980867142752435675_n.jpg?compress=true&quality=80&w=1920&dpr=2.6');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+	height: 90px;
+	width: 90px;
+	margin: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.heading {
+	display: flex;
+	justify-content: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-column {
+	padding: 3%;
+	height: 12rem;
 }
-
-.App-link {
-  color: #61dafb;
+.card-image {
+	width: 100px;
+	height: 100px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home,
+.match-details {
+	min-height: 80vh;
+}
+.card-details {
+	padding: 3%;
 }
