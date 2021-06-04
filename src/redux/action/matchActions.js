@@ -62,6 +62,7 @@ export const getAllMatches = () => {
 			const res = await req.json();
 			console.log(res);
 			dispatch(getAllMatchesSuccess(res));
+			localStorage.setItem('matches', JSON.stringify(res));
 		} catch (error) {
 			console.log(error);
 			dispatch(getAllMatchesFailure('Something went wrong'));

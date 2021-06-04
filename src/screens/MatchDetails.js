@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { getMatchDetails } from '../redux/action/matchActions';
@@ -15,6 +15,7 @@ const MatchDetails = () => {
 		const id = location.pathname.split('/')[1];
 		dispatch(getMatchDetails(id));
 	}, []);
+
 	return (
 		<div className='match-details'>
 			<div className='heading '>
