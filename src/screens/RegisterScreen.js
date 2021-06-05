@@ -1,5 +1,5 @@
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { register } from '../redux/action/userActions';
 import { getTheme } from '../getTheme';
@@ -11,7 +11,7 @@ const RegisterScreen = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
-
+	const { loading } = useSelector((state) => state.userRegister);
 	useEffect(() => {
 		const M = window.M;
 		M.AutoInit();
@@ -31,6 +31,11 @@ const RegisterScreen = () => {
 				<div className='col l4 m8 s10 offset-s1 offset-m2 offset-l4 '>
 					<br />
 					<div className='card'>
+						{loading && (
+							<div className='progress '>
+								<div className={`indeterminate ${theme}`}></div>
+							</div>
+						)}
 						<div className='login-card'>
 							<h4>Sign Up</h4>
 							<form onSubmit={submitHandler}>

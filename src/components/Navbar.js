@@ -79,21 +79,30 @@ const Navbar = () => {
 					</ul>
 				</div>
 			</nav>
-
-			<ul className='sidenav' id='mobile-demo'>
-				<li>
-					<a href='sass.html'>Sass</a>
-				</li>
-				{/* <li>
-					<a href='badges.html'>Components</a>
-				</li>
-				<li>
-					<a href='collapsible.html'>Javascript</a>
-				</li>
-				<li>
-					<a href='mobile.html'>Mobile</a>
-				</li> */}
-			</ul>
+			{userInfo && userInfo.name ? (
+				<ul className='sidenav' id='mobile-demo'>
+					<li>
+						<Link to='/matches'>All Matches</Link>
+					</li>
+					<li>
+						<Link to='/favourites'>Favourites</Link>
+					</li>
+					<li>
+						<Link to='/preditWinner'>Pridict Winner</Link>
+					</li>
+					<li>
+						<Link to='/' onClick={logoutHandler}>
+							Logout
+						</Link>
+					</li>
+				</ul>
+			) : (
+				<ul className='sidenav' id='mobile-demo'>
+					<li>
+						<Link to='/login'>Login</Link>
+					</li>
+				</ul>
+			)}
 		</div>
 	);
 };

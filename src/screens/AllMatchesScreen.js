@@ -75,7 +75,7 @@ const AllMatches = () => {
 			{matches && console.log(array)} */}
 			{!loading && (
 				<div className='heading '>
-					<h3 className='valign-wrapper blue-text text-darken-4'>
+					<h3 className={`valign-wrapper ${theme.split(' ')[0]}-text text-${theme.split(' ')[1]}`}>
 						<img src={logo} alt='' className='logo' />
 						<strong>All Matches</strong>
 					</h3>
