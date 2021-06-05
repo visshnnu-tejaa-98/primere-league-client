@@ -2,6 +2,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { login } from '../redux/action/userActions';
+import { getTheme } from '../getTheme';
 const LoginScreen = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const LoginScreen = () => {
 	const [password, setPassword] = useState('');
 
 	const redirect = location.search ? location.search.split('=')[1] : '/';
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+
 	useEffect(() => {
 		const M = window.M;
 		M.AutoInit();
@@ -38,10 +41,10 @@ const LoginScreen = () => {
 						{/* loader */}
 						{loading && (
 							<div className='progress '>
-								<div className='indeterminate blue'></div>
+								<div className={`indeterminate ${theme}`}></div>
 							</div>
 						)}
-						{error && <h4 className='blue-text'>Something went wrong</h4>}
+						{error && <h4 className={`${theme.split(' ')[0]}`}>Something went wrong</h4>}
 
 						<div className='login-card'>
 							<h4>Login</h4>
@@ -82,7 +85,7 @@ const LoginScreen = () => {
 								<br />
 								<br />
 								<div>
-									<button className='waves-effect waves-light btn blue darken-3 '>Login</button>
+									<button className={`waves-effect waves-light btn ${theme}`}>Login</button>
 								</div>
 							</form>
 						</div>

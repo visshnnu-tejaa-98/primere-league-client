@@ -10,13 +10,15 @@ import ForgotScreen from './screens/ForgotScreen';
 import ResetPassword from './screens/ResetScreen';
 import AllMatches from './screens/AllMatchesScreen';
 import Favourites from './screens/Favourites';
+import PridictWinner from './screens/PredictWinner';
 
 function App() {
 	return (
 		<BrowserRouter className='App'>
 			<Navbar />
 			<Switch>
-				<Route path='/favourites' component={Favourites}></Route>
+				<Route path='/preditWinner' component={PridictWinner} exact></Route>
+				<Route path='/favourites' component={Favourites} exact></Route>
 				<Route path='/matches' component={AllMatches}></Route>
 				<Route path='/reset/:id' component={ResetPassword}></Route>
 				<Route path='/forgot' component={ForgotScreen} exact></Route>

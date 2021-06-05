@@ -2,6 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { register } from '../redux/action/userActions';
+import { getTheme } from '../getTheme';
 const RegisterScreen = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -9,6 +10,8 @@ const RegisterScreen = () => {
 	const [conformPassword, setConformPassword] = useState('');
 	const dispatch = useDispatch();
 	const history = useHistory();
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+
 	useEffect(() => {
 		const M = window.M;
 		M.AutoInit();
@@ -88,7 +91,7 @@ const RegisterScreen = () => {
 								<br />
 								<br />
 								<div>
-									<button className='waves-effect waves-light btn blue darken-3 '>Sign Up</button>
+									<button className={`waves-effect waves-light btn ${theme}`}>Sign Up</button>
 								</div>
 							</form>
 						</div>

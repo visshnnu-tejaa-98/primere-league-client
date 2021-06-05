@@ -5,11 +5,14 @@ import { getMatchDetails } from '../redux/action/matchActions';
 import logo from '../images/ipl logo.svg';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import { getTheme } from '../getTheme';
 
 const MatchDetails = () => {
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const { match, loading, error } = useSelector((state) => state.singleMatchDetais);
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+
 	console.log(match);
 	useEffect(() => {
 		const id = location.pathname.split('/')[1];
@@ -19,7 +22,7 @@ const MatchDetails = () => {
 	return (
 		<div className='match-details'>
 			<div className='heading '>
-				<h3 className='valign-wrapper blue-text text-darken-4'>
+				<h3 className={`valign-wrapper ${theme.split(' ')[0]}-text text-${theme.split(' ')[1]}`}>
 					<img src={logo} alt='' className='logo' />
 					<strong>Match Details</strong>
 				</h3>

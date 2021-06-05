@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getTheme } from '../getTheme';
 import { logout } from '../redux/action/userActions';
 
 const Navbar = () => {
@@ -12,6 +13,8 @@ const Navbar = () => {
 	const [userInfo, setUserInfo] = useState({});
 	const user = useSelector((state) => state.userLogin);
 	const dispatch = useDispatch();
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+	console.log(theme);
 
 	useEffect(() => {
 		setUserInfo(user.userInfo);
@@ -23,7 +26,7 @@ const Navbar = () => {
 	};
 	return (
 		<div className='navbar'>
-			<nav className='blue darken-2'>
+			<nav className={theme}>
 				<div className='nav-wrapper container'>
 					<Link to='/' className='brand-logo'>
 						Primere League
@@ -56,6 +59,9 @@ const Navbar = () => {
 										</li>
 										<li>
 											<Link to='/favourites'>Favourites</Link>
+										</li>
+										<li>
+											<Link to='/preditWinner'>Pridict Winner</Link>
 										</li>
 										<li>
 											<Link to='/' onClick={logoutHandler}>

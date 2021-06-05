@@ -57,6 +57,7 @@ export const userLoginReducer = (state = {}, action) => {
 			return {
 				userInfo: {},
 			};
+
 		default:
 			return state;
 	}

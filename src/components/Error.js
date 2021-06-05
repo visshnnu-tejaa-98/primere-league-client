@@ -1,5 +1,12 @@
+import { getTheme } from '../getTheme';
+
 const Error = ({ message }) => {
-	return <h5 className='error blue-text text-darken-3 center '>😞 {message}</h5>;
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+	return (
+		<h5 className={`${theme.split(' ')[0]}-text text-${theme.split(' ')[1]} center`}>
+			😞 {message}
+		</h5>
+	);
 };
 
 export default Error;

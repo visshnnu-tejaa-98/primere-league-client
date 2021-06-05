@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import Error from '../components/Error';
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
+import { getTheme } from '../getTheme';
 const AllMatches = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [searchYear, setSearchYear] = useState('');
@@ -14,6 +15,8 @@ const AllMatches = () => {
 	const [filteredMatches, setFilteredMatches] = useState([]);
 	const dispatch = useDispatch();
 	const { matches, loading, error } = useSelector((state) => state.allMatches);
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+
 	useEffect(() => {
 		const M = window.M;
 		M.AutoInit();
@@ -22,6 +25,7 @@ const AllMatches = () => {
 		let array = JSON.parse(localStorage.getItem('matches'));
 		console.log(array);
 		setFilteredMatches(array);
+
 		setAllMatches(array);
 		// if (!array) {
 		// 	dispatch(getAllMatches());
@@ -41,7 +45,9 @@ const AllMatches = () => {
 					match.team2.toLowerCase().includes(searchTerm) ||
 					searchTerm === ' ')
 		);
+		const M = window.M;
 		setFilteredMatches(array);
+		M.toast({ html: `${array.length} results found!` });
 		console.log(array);
 		console.log(searchTerm, searchYear);
 		dispatch(getAllMatches());
@@ -107,7 +113,7 @@ const AllMatches = () => {
 						</div>
 						<div className='col s12 m6 l5'>
 							<nav>
-								<div className='nav-wrapper blue darken-2'>
+								<div className={`nav-wrapper ${theme} `}>
 									<form>
 										<div className='input-field'>
 											<input
@@ -127,7 +133,7 @@ const AllMatches = () => {
 						</div>
 					</div>
 					<div className='center'>
-						<Link className='waves-effect waves-light btn blue darken-3' onClick={getData}>
+						<Link className={`waves-effect waves-light btn ${theme}`} onClick={getData}>
 							<i className='material-icons left'>search</i>search
 						</Link>
 					</div>

@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { BACKEND_ENDPOINT } from '../endpoints';
 import { useHistory } from 'react-router-dom';
+import { getTheme } from '../getTheme';
 const ResetPassword = () => {
 	const [password, setPassword] = useState('');
 	const [conformPassword, setConformPassword] = useState('');
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
+
 	let history = useHistory();
 	useEffect(() => {
 		const M = window.M;
@@ -75,7 +78,7 @@ const ResetPassword = () => {
 								</div>
 
 								<div>
-									<button className='waves-effect waves-light btn blue darken-3 '>
+									<button className={`waves-effect waves-light btn ${theme}`}>
 										Reset Password
 									</button>
 								</div>

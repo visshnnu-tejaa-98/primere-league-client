@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+
 import { getAllMatchesReducer, getSingleMatchReducer } from './reducers/matchReducers';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
@@ -18,6 +19,10 @@ const allMatchesFromLocalStorage = localStorage.getItem('matches')
 	? JSON.parse(localStorage.getItem('matches'))
 	: null;
 
+const favouriteTeamFromLocalStorage = localStorage.getItem('favouriteTeam')
+	? JSON.parse(localStorage.getItem('favouriteTeam'))
+	: null;
+
 const initailState = {
 	userLogin: {
 		userInfo: userInfoFromLocalStorage,
@@ -25,6 +30,7 @@ const initailState = {
 	allMatches: {
 		matches: allMatchesFromLocalStorage,
 	},
+	favouriteTeam: favouriteTeamFromLocalStorage,
 };
 export const store = createStore(
 	reducer,

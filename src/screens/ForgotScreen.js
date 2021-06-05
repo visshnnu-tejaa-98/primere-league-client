@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BACKEND_ENDPOINT } from '../endpoints';
+import { getTheme } from '../getTheme';
 const ForgotScreen = () => {
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
+	const theme = getTheme(JSON.parse(localStorage.getItem('favouriteTeam')).team);
 
 	useEffect(() => {
 		const M = window.M;
@@ -49,15 +51,13 @@ const ForgotScreen = () => {
 									<p className='red-text'>* Entered email will get a link to reset password</p>
 								</div>
 								<div>
-									<button className='waves-effect waves-light btn blue darken-3 '>
-										Send Email
-									</button>
+									<button className={`waves-effect waves-light btn ${theme}`}>Send Email</button>
 								</div>
 							</form>
 						</div>
 					</div>
 					<br />
-					<h6 className='blue-text'>{message}</h6>
+					<h6 className={`${theme.split(' ')[0]}-text`}>{message}</h6>
 				</div>
 			</div>
 		</div>
